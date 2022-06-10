@@ -1,0 +1,10 @@
+FROM python:3
+
+ADD / .
+
+RUN pip install pyyaml
+
+EXPOSE 9090
+EXPOSE 9091
+
+CMD [ "python3", "dynamic.py", "awsConfig.yml"]

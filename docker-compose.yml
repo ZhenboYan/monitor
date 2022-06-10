@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  prometheus-pushgateway:
+    build: ./PrometheusGrafana
+  # grafana:
+  #   image: 
+  # script-exporter:
+  #   image:
+  #   volumes:
+  #     -
