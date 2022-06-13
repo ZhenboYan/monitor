@@ -21,8 +21,8 @@ else:
             except yaml.YAMLError as exc:
                 print("\n USAGE: python3 dynamic.py <config-file> \n \n Tip: Ensure that the Python script dynamic.py, the supporting files, and the config file are in one directory without subdirectories or other hierarchies.\n")
         print("Initializing docker containers...")
-        subprocess.run("docker start grafana", shell=True)
-        subprocess.run("sudo docker run -d -p 9091:9091 prom/pushgateway", shell=True)
+        #subprocess.run("docker start grafana", shell=True)
+        #subprocess.run("sudo docker run -d -p 9091:9091 prom/pushgateway", shell=True)
         print("Starting script...")
         # Help Command
         # Get current time stamp
@@ -73,7 +73,7 @@ else:
                     for src, target in replacements.items():
                         line = line.replace(src, target)
                     outfile.write(line)
-            subprocess.run("sudo docker run -d --net host -p 9090:9090     -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml     prom/prometheus:v2.2.1", shell=True)
+            #subprocess.run("sudo docker run -d --net host -p 9090:9090     -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml     prom/prometheus:v2.2.1", shell=True)
 
             print("Applying dashboard JSON to Grafana API...")
             # Run the API script to convert output JSON to Grafana dashboard automatically
