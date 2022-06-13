@@ -33,7 +33,8 @@ else:
             print("Single Network Element Flow Detected")
             print("Collecting dashboard template...")
             # Map of replacements to complete from template.json to out.json
-            replacements = {'IPHOSTA': str(data['hostA']['IP']), 
+            replacements = {'GRAFANA': str(data['grafanaHostIP']),
+                            'IPHOSTA': str(data['hostA']['IP']), 
                             'IPHOSTB': str(data['hostB']['IP']),
                             'IFNAMEHOSTA': str(data['hostA']['interfaceName']),
                             'IFNAMEHOSTB': str(data['hostB']['interfaceName']),
@@ -80,7 +81,8 @@ else:
             # Map of replacements to complete from template.json to out.json
             replacements = {}
             if data['switchNum'] == 2:
-                replacements = {'IPHOSTA': str(data['hostA']['IP']), 
+                replacements = {'GRAFANA': str(data['grafanaHostIP']),
+                                'IPHOSTA': str(data['hostA']['IP']), 
                                 'IPHOSTB': str(data['hostB']['IP']),
                                 'IFNAMEHOSTA': str(data['hostA']['interfaceName']),
                                 'IFNAMEHOSTB': str(data['hostB']['interfaceName']),
@@ -100,7 +102,8 @@ else:
                                 'IPSWITCHB': str(data['switchDataB']['target']),
                                 'DASHTITLE':str(data['dashTitle']) + timeTxt}
             elif data['switchNum'] == 3:
-                replacements = {'IPHOSTA': str(data['hostA']['IP']), 
+                replacements = {'GRAFANA': str(data['grafanaHostIP']),
+                                'IPHOSTA': str(data['hostA']['IP']), 
                                 'IPHOSTB': str(data['hostB']['IP']),
                                 'IFNAMEHOSTA': str(data['hostA']['interfaceName']),
                                 'IFNAMEHOSTB': str(data['hostB']['interfaceName']),
@@ -125,7 +128,8 @@ else:
                                 'PUSHGATEWAYNAME': "pushgateway",
                                 'DASHTITLE':str(data['dashTitle']) + timeTxt}
             else:
-                replacements = {'IPHOSTA': str(data['hostA']['IP']), 
+                replacements = {'GRAFANA': str(data['grafanaHostIP']),
+                                'IPHOSTA': str(data['hostA']['IP']), 
                                 'IPHOSTB': str(data['hostB']['IP']),
                                 'IFNAMEHOSTA': str(data['hostA']['interfaceName']),
                                 'IFNAMEHOSTB': str(data['hostB']['interfaceName']),

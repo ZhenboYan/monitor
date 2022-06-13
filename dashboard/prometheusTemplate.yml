@@ -45,7 +45,7 @@ scrape_configs:
   - job_name: PUSHGATEWAYNAME
     static_configs:
       - targets: 
-        - IPHOSTA:PUSHPORT
+        - GRAFANA:PUSHPORT # grafana server
     metrics_path: /snmp
     params:
       module: PARAMS
