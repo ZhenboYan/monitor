@@ -7,6 +7,6 @@ sudo docker run -d --name startprom --net host -p 9090:9090 -v $PWD/PrometheusGr
 sudo systemctl start grafana-server
 sudo docker run -d --name startpush -p 9091:9091 prom/pushgateway
 
-cd dashboard
+cd PrometheusGrafana
 
 python3 awsdynamic.py awsConfig.yml
