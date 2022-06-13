@@ -62,7 +62,7 @@ else:
 
             print("Generating custom Prometheus config file...")
             # Iteratively find and replace in one go 
-            with open('prometheusTemplate.yml') as infile, open('prometheus.yml', 'w') as outfile:
+            with open('awsTemplate.yml') as infile, open('prometheus.yml', 'w') as outfile:
                 for line in infile:
                     for src, target in replacements.items():
                         line = line.replace(src, target)
