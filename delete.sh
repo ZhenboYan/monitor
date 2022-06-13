@@ -1,2 +1,2 @@
 docker rm -f startpush startprom startgrafana
-rm PrometheusGrafana/prometheus.yml
+rm -f PrometheusGrafana/prometheus.yml
