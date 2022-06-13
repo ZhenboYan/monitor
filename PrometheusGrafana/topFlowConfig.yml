@@ -4,6 +4,8 @@ switchNum: 1
 dashTitle: "AWS Top Flow Dashboard"
 # Prometheus Port
 prometheusPort: 9090
+# Pushgateway Port
+pushgatewayPort: 9091
 # The IP of the host which is running the Grafana container
 grafanaHostIP: 172.31.72.189
 # The port which the Grafana container is listening on
@@ -21,7 +23,7 @@ arpMetrics:
 hostA:
   IP: 198.32.43.16
   interfaceName: 'ens2f0.43'
-  interfaceIP: '198.32.43.255'
+  interfaceIP: '10.10.100.1'
   nodeName: 'sdn-dtn-2-10.ultralight.org'
   vlan: 1000
   nodeExporterPort: 9100
@@ -43,7 +45,7 @@ hostB:
 switchData:
   job_name: 'snmp1'
   # The IP of the host which is running the SNMP Exporter container
-  SNMPHostIP: 198.32.43.15
+  SNMPHostIP: 198.32.43.16
   scrapeInterval: 15s
   scrapeDuration: 5h
   target: 172.16.1.14

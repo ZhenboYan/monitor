@@ -21,8 +21,8 @@ else:
             except yaml.YAMLError as exc:
                 print("\n USAGE: python3 dynamic.py <config-file> \n \n Tip: Ensure that the Python script dynamic.py, the supporting files, and the config file are in one directory without subdirectories or other hierarchies.\n")
         print("Initializing docker containers...")
-        subprocess.run("docker start grafana", shell=True)
-        subprocess.run("sudo docker run -d -p 9091:9091 prom/pushgateway", shell=True)
+        #subprocess.run("docker start grafana", shell=True)
+        #subprocess.run("sudo docker run -d -p 9091:9091 prom/pushgateway", shell=True)
         print("Starting script...")
         # Help Command
         # Get current time stamp
@@ -43,16 +43,7 @@ else:
                             'IFNAMESWITCHHOSTB': str(data['hostB']['switchPort']['ifIndex']),
                             'DATAPLANEIPA': str(data['hostA']['interfaceIP']),
                             'DATAPLANEIPB': str(data['hostB']['interfaceIP']),
-                            'NODENAMEA': str(data['hostA']['nodeName']),
-                            'NODENAMEB': str(data['hostB']['nodeName']),
-                            'PORTA': str(data['hostA']['nodeExporterPort']),
-                            'PORTB': str(data['hostB']['nodeExporterPort']),
-                            'ARPPORT': str(data['arpMetrics']['port']),
-                            'TCPPORT': str(data['tcpMetrics']['port']),
-                            'ARPNAME': str(data['arpMetrics']['job_name']),
-                            'TCPNAME': str(data['tcpMetrics']['job_name']),
                             'IPSWITCH': str(data['switchData']['target']),
-                            'SNMPNAME': str(data['switchData']['job_name']),
                             'PUSHPORT': str(data['pushgatewayPort']),
                             'PUSHGATEWAYNAME': "pushgateway",
                             'SCRAPEINTERVAL': str(data['switchData']['scrapeInterval']),
@@ -75,7 +66,7 @@ else:
                     for src, target in replacements.items():
                         line = line.replace(src, target)
                     outfile.write(line)
-            subprocess.run("sudo docker run -d  -p 9090:9090     -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml     prom/prometheus:v2.2.1", shell=True)
+            #subprocess.run("sudo docker run -d  -p 9090:9090     -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml     prom/prometheus:v2.2.1", shell=True)
 
             print("Applying dashboard JSON to Grafana API...")
             # Run the API script to convert output JSON to Grafana dashboard automatically
@@ -103,19 +94,10 @@ else:
                                 'NAMEIFBOUT': str(data['hostB']['switchPort']['ifName']),
                                 'DATAPLANEIPA': str(data['hostA']['interfaceIP']),
                                 'DATAPLANEIPB': str(data['hostB']['interfaceIP']),
-                                'NODENAMEA': str(data['hostA']['nodeName']),
-                                'NODENAMEB': str(data['hostB']['nodeName']),
-                                'PORTA': str(data['hostA']['nodeExporterPort']),
-                                'PORTB': str(data['hostB']['nodeExporterPort']),
-                                'ARPPORT': str(data['arpMetrics']['port']),
-                                'TCPPORT': str(data['tcpMetrics']['port']),
                                 'PUSHPORT': str(data['pushgatewayPort']),
                                 'PUSHGATEWAYNAME': "pushgateway",
-                                'ARPNAME': str(data['arpMetrics']['job_name']),
-                                'TCPNAME': str(data['tcpMetrics']['job_name']),
                                 'IPSWITCHA': str(data['switchDataA']['target']),
                                 'IPSWITCHB': str(data['switchDataB']['target']),
-                                'SNMPNAME': str(data['switchDataA']['job_name']),
                                 'DASHTITLE':str(data['dashTitle']) + timeTxt}
             elif data['switchNum'] == 3:
                 replacements = {'IPHOSTA': str(data['hostA']['IP']), 
@@ -136,20 +118,11 @@ else:
                                 'NAMEIFCOUT': str(data['switchDataC']['portOut']['ifName']),
                                 'DATAPLANEIPA': str(data['hostA']['interfaceIP']),
                                 'DATAPLANEIPB': str(data['hostB']['interfaceIP']),
-                                'NODENAMEA': str(data['hostA']['nodeName']),
-                                'NODENAMEB': str(data['hostB']['nodeName']),
-                                'PORTA': str(data['hostA']['nodeExporterPort']),
-                                'PORTB': str(data['hostB']['nodeExporterPort']),
-                                'ARPPORT': str(data['arpMetrics']['port']),
-                                'TCPPORT': str(data['tcpMetrics']['port']),
-                                'ARPNAME': str(data['arpMetrics']['job_name']),
-                                'TCPNAME': str(data['tcpMetrics']['job_name']),
                                 'IPSWITCHA': str(data['switchDataA']['target']),
                                 'IPSWITCHB': str(data['switchDataB']['target']),
                                 'IPSWITCHC': str(data['switchDataC']['target']),
                                 'PUSHPORT': str(data['pushgatewayPort']),
                                 'PUSHGATEWAYNAME': "pushgateway",
-                                'SNMPNAME': str(data['switchDataA']['job_name']),
                                 'DASHTITLE':str(data['dashTitle']) + timeTxt}
             else:
                 replacements = {'IPHOSTA': str(data['hostA']['IP']), 
@@ -174,19 +147,10 @@ else:
                                 'NAMEIFDOUT': str(data['switchDataD']['portOut']['ifName']),
                                 'DATAPLANEIPA': str(data['hostA']['interfaceIP']),
                                 'DATAPLANEIPB': str(data['hostB']['interfaceIP']),
-                                'NODENAMEA': str(data['hostA']['nodeName']),
-                                'NODENAMEB': str(data['hostB']['nodeName']),
-                                'PORTA': str(data['hostA']['nodeExporterPort']),
-                                'PORTB': str(data['hostB']['nodeExporterPort']),
-                                'ARPPORT': str(data['arpMetrics']['port']),
-                                'TCPPORT': str(data['tcpMetrics']['port']),
-                                'ARPNAME': str(data['arpMetrics']['job_name']),
-                                'TCPNAME': str(data['tcpMetrics']['job_name']),
                                 'IPSWITCHA': str(data['switchDataA']['target']),
                                 'IPSWITCHB': str(data['switchDataB']['target']),
                                 'IPSWITCHC': str(data['switchDataC']['target']),
                                 'IPSWITCHD': str(data['switchDataD']['target']),
-                                'SNMPNAME': str(data['switchDataA']['job_name']),
                                 'PUSHPORT': str(data['pushgatewayPort']),
                                 'PUSHGATEWAYNAME': "pushgateway",
                                 'DASHTITLE':str(data['dashTitle']) + timeTxt}
