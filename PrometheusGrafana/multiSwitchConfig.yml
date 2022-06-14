@@ -1,17 +1,20 @@
 # Number of switches
 switchNum: 2
-# Grafana Dashboard Title
-dashTitle: "Multiple Network Element Dashboard"
+# Grafana Dashboard Title   
+dashTitle: "AWS pushgateway 2 switches"
 # Prometheus Port
 prometheusPort: 9090
+# Pushgateway Port
+pushgatewayPort: 9091
+# The IP of the host which is running the Grafana container
+grafanaHostIP: 172.31.72.189
+# The port which the Grafana container is listening on
+grafanaPort: 3000
 # Host 1 Specifics 
 hostA:
   IP: 198.32.43.16
   interfaceName: 'ens2.1000'
   interfaceIP: '10.10.101.1/24'
-  nodeName: 'sdn-dtn-2-10.ultralight.org'
-  vlan: 1001
-  nodeExporterPort: 9100
   switchPort: 
     ifName: 'TenGigabitEthernet 0/43'
     ifIndex: 1054084
@@ -20,9 +23,6 @@ hostB:
   IP: 198.32.43.15
   interfaceName: 'ens2.1000'
   interfaceIP: '10.10.101.2/24'
-  nodeName: 'sdn-dtn-2-11.ultralight.org'
-  vlan: 1001
-  nodeExporterPort: 9100
   switchPort: 
     ifName: 'TenGigabitEthernet 0/42'
     ifIndex: 1053956

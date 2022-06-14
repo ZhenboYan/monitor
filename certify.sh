@@ -21,7 +21,6 @@ if [ $# = 1 ]; then
     sudo snap refresh core
     # installation and certification
     sudo snap install --classic certbot
-    grafana-cli plugins install jdbranham-diagram-panel
 
     if [ $(id -u) = 0 ]; then
         sudo ln -s /snap/bin/certbot /usr/bin/certbot
@@ -48,6 +47,7 @@ if [ $# = 1 ]; then
             sed -i 's@;cert_key =@cert_key = /etc/grafana/privkey.pem@' /etc/grafana/grafana.ini
 
             # restart
+            grafana-cli plugins install jdbranham-diagram-panel
             sudo service grafana-server restart
         else
             echo "!!    Certificate not found!"

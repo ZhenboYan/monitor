@@ -3,6 +3,17 @@
 pip install pyymal
 pip install requests
 
+echo "!!    Make sure Port 3000, 9090, 9091 are not in use"
+echo "!!    sudo lsof -i -P -n | grep LISTEN"
+echo "!!    Check Port 3000"
+sudo lsof -i -P -n | grep 3000
+echo "!!    Check Port 9090"
+sudo lsof -i -P -n | grep 9090
+echo "!!    Check Port 9091"
+sudo lsof -i -P -n | grep 9091
+
+docker rm -f startpush startprom
+rm -f PrometheusGrafana/prometheus.yml
 sudo docker run -d --name startprom --net host -p 9090:9090 -v $PWD/PrometheusGrafana/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus:v2.2.1
 # sudo docker run -d --name startgrafana -p 3000:3000 -e "GF_INSTALL_PLUGINS=jdbranham-diagram-panel" grafana/grafana
 # sudo docker start startgrafana

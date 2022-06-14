@@ -24,8 +24,11 @@ scrape_configs:
     # scheme defaults to 'http'.
     static_configs:
       - targets: ['localhost:9090']
-
-  - job_name: PUSHGATEWAYNAME
+  - job_name: pushgateway
+    scrape_interval: 15s
+    scrape_timeout: 10s
+    metrics_path: /metrics
+    scheme: http #s
     static_configs:
-      - targets: 
-        - GRAFANA:PUSHPORT # grafana server
+      - targets:
+        - 172.31.72.189:9091

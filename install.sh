@@ -42,5 +42,12 @@ fi
 if [ "$sslmode" == "1" ]; then # Let's Encrypt
     echo "    Note: port 80 must be available for DNS challenges to succeed. "
     echo "          See https://certbot.eff.org/faq for more information."
-    pause
+    read -r -p "Please enter the domain name of this machine: " domain
+    echo "||             Certbot running for ($domain)..."
+    if [ $(id -u) = 0 ]; then
+        /bin/bash ./certify.sh $domain
+    else
+        echo "??            User is not root! Certbot requires root for security reasons."
+        echo "              Please run the following script after installation: sudo /certify.sh $domain" 
+    fi
 fi
