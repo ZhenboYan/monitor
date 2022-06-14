@@ -8,11 +8,11 @@ EOF
 }
 
 if [ $# = 1 ]; then
-    if [ -f "/etc/letsencrypt/live/dev2.virnao.com/fullchain.pem" ]; then
+    domain=$1
+    if [ -f "/etc/letsencrypt/live/$domain/fullchain.pem" ]; then
         echo "!!    Already Certified"
         exit 1
     fi
-    domain=$1
     # install tools
     sudo yum install snapd
     sudo systemctl enable --now snapd.socket
