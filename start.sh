@@ -13,12 +13,13 @@ echo "!!    Check Port 9091"
 sudo lsof -i -P -n | grep 9091
 
 docker rm -f startpush startprom
-sudo docker run -d --name startprom --net host -p 9090:9090 -v $PWD/PrometheusGrafana/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus:v2.2.1
+
 # sudo docker run -d --name startgrafana -p 3000:3000 -e "GF_INSTALL_PLUGINS=jdbranham-diagram-panel" grafana/grafana
 # sudo docker start startgrafana
 sudo systemctl start grafana-server
-sudo docker run -d --name startpush -p 9091:9091 prom/pushgateway
 
 cd PrometheusGrafana
+sudo docker run -d --name startprom -p 9090:9090     -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml     prom/prometheus:v2.2.1
+sudo docker run -d --name startpush -p 9091:9091 prom/pushgateway
 
 python3 awsdynamic.py awsConfig.yml 
