@@ -21,4 +21,4 @@ sudo docker run -d --name startpush -p 9091:9091 prom/pushgateway
 
 cd PrometheusGrafana
 
-python3 awsdynamic.py awsConfig.yml
+python3 awsdynamic.py awsConfig.yml 
