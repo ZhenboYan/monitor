@@ -8,7 +8,7 @@ EOF
 }
 
 if [ $# = 1 ]; then
-    if [ -f "/etc/letsencrypt/live" ]; then
+    if [ -f "/etc/letsencrypt/live/dev2.virnao.com/fullchain.pem" ]; then
         echo "!!    Already Certified"
         exit 1
     fi
