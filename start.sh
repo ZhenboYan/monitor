@@ -9,7 +9,9 @@ sudo lsof -i -P -n | grep 9090
 echo "!!    Check Port 9091"
 sudo lsof -i -P -n | grep 9091
 
+echo "!!    Remove previous containers"
 docker rm -f startpush startprom
+echo "!!    Previous containers revmoed"
 
 # sudo docker run -d --name startgrafana -p 3000:3000 -e "GF_INSTALL_PLUGINS=jdbranham-diagram-panel" grafana/grafana
 # sudo docker start startgrafana
