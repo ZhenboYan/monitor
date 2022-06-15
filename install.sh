@@ -27,14 +27,16 @@ sudo systemctl enable --now grafana-server
 sudo firewall-cmd --add-port=3000/tcp --permanent
 sudo firewall-cmd --reload
 sudo yum install pip
-pip install pyymal
-pip install requests
+sudo yum –y install python3
+sudo yum –y install python3-pip
+pip3 install pyymal
+pip3 install requests
 # sudo systemctl stop grafana-server
 
 # >Certificates
 
 if [ -z "$input_lets" ]; then
-    echo "Let's Encrypt Certificate Setup: "
+    echo "Let's Encrypt Certificate Setup for Grafana to enable https on port 3000: "
     echo "      1) Let's Encrypt signed certificate. (this machine must be reachable via over the internet by the domain name)"
     echo "      2) Finish Install."
     read -r -p "Select a mode [1]: " sslmode

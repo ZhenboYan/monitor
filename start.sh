@@ -9,16 +9,15 @@ sudo lsof -i -P -n | grep 9090
 echo "!!    Check Port 9091"
 sudo lsof -i -P -n | grep 9091
 
-echo "!!    Remove previous containers"
-docker rm -f startpush startprom
-echo "!!    Previous containers revmoed"
-
 # sudo docker run -d --name startgrafana -p 3000:3000 -e "GF_INSTALL_PLUGINS=jdbranham-diagram-panel" grafana/grafana
 # sudo docker start startgrafana
 
 read -r -p "!!    Input config file name: " config_file
 
 if [ -f "PrometheusGrafana/$config_file" ]; then
+    echo "!!    Remove previous containers"
+    docker rm -f startpush startprom
+    echo "!!    Previous containers revmoed"
     sudo systemctl start grafana-server
     cd PrometheusGrafana
     sudo docker run -d --name startprom -p 9090:9090     -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml     prom/prometheus:v2.2.1
