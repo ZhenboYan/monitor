@@ -7,7 +7,7 @@ if [ "$correct_ip" == "N" ]; then
     read -r -p "Type in your ip address: " MYIP
 fi
 
-echo "||    Inserting your IP address ${MYIP} to prometheus.yml file"
+echo "||    Inserting ${MYIP} to prometheus.yml file"
 echo "||    If the IP address is incorrect please update manually"
 sed -i -e "s@your_ip:9091 @${MYIP}:9091 @" PrometheusGrafana/prometheus.yml
 
@@ -17,4 +17,4 @@ echo "!!    Make sure you have configured PrometheusGrafana/config.yml before ./
 echo "!!    configuration templates are provided PrometheusGrafana/*_template.yml"
 echo "!!    Visit Google Doc for Grafana API Key instruction: https://docs.google.com/document/d/e/2PACX-1vRAwtpqlMKbii-hiqMoFD_N5PghMSw2eTMts9VhBww3AoSnXnQkjEcra4ReyLLsXrAuE_VEwLHRg33c/pub"
 
-echo "after configuration run ./start.sh to start Grafana-Prometheus-Pushgateway"
+echo "!!    After Configuration: run ./start.sh to start Grafana-Prometheus-Pushgateway"
