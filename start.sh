@@ -15,12 +15,9 @@ docker rm -f startpush startprom
 # sudo docker start startgrafana
 
 echo "!!    Number of hosts"
-echo "!!    1). 1"
-echo "!!    2). 2"
-echo "!!    3). 3 or more"
+echo "!!    1). 1       2). 2       3). 3 or more"
 
 read -r -p "Select: " hostnum
-hostnum=${hostnum:-1}
 
 if [ "$hostnum" == "1" ] || [ "$hostnum" == "2" ] || [ "$hostnum" == "3" ]; then
     sudo systemctl start grafana-server
@@ -32,7 +29,7 @@ else
     exit 1
 fi
 
-if [ "$hostnum" == "1" ] || [ "$hostnum" == "2" ] || [ "$hostnum" == "3" ]; then
+if [ "$hostnum" == "1" ]; then
     python3 one_dynamic.py config.yml 
 fi
 if [ "$hostnum" == "2" ]; then
