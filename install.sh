@@ -26,7 +26,6 @@ sudo yum  -y install grafana
 sudo systemctl enable --now grafana-server
 sudo firewall-cmd --add-port=3000/tcp --permanent
 sudo firewall-cmd --reload
-sudo yum install pip
 sudo yum –y install python3
 sudo yum –y install python3-pip
 pip3 install pyymal
