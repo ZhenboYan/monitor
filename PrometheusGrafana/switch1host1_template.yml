@@ -1,5 +1,7 @@
 # Number of switches
 switchNum: 1
+# Number of hosts
+hostNum: 1
 # Grafana Dashboard Title   
 dashTitle: "AWS pushgateway"
 # Prometheus Port
