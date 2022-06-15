@@ -31,4 +31,4 @@ scrape_configs:
     scheme: http #s
     static_configs:
       - targets:
-        - localhost:9091
+        - 172.31.72.189:9091
