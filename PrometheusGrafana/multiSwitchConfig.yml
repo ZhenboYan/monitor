@@ -7,9 +7,11 @@ prometheusPort: 9090
 # Pushgateway Port
 pushgatewayPort: 9091
 # The IP of the host which is running the Grafana container
-grafanaHostIP: 172.31.72.189
+grafanaHostIP: localhost
 # The port which the Grafana container is listening on
 grafanaPort: 3000
+# Grafana API Token
+grafanaAPIToken: "Bearer eyJrIjoiSURWRGtqNEdPcUhKVlppVEF2VWRpV2ZVclJETTVaVTciLCJuIjoiYXdzdm0iLCJpZCI6MX0="
 # Host 1 Specifics 
 hostA:
   IP: 198.32.43.16

@@ -23,8 +23,7 @@ try:
         print("Single Network Element Flow Detected")
         print("Collecting dashboard template...")
         # Map of replacements to complete from template.json to out.json
-        replacements = {'GRAFANA': str(data['grafanaHostIP']),
-                        'IPHOSTA': str(data['hostA']['IP']), 
+        replacements = {'IPHOSTA': str(data['hostA']['IP']), 
                         'IPHOSTB': str(data['hostB']['IP']),
                         'IFNAMEHOSTA': str(data['hostA']['interfaceName']),
                         'IFNAMEHOSTB': str(data['hostB']['interfaceName']),
@@ -62,8 +61,7 @@ try:
         # Map of replacements to complete from template.json to out.json
         replacements = {}
         if data['switchNum'] == 2:
-            replacements = {'GRAFANA': str(data['grafanaHostIP']),
-                            'IPHOSTA': str(data['hostA']['IP']), 
+            replacements = {'IPHOSTA': str(data['hostA']['IP']), 
                             'IPHOSTB': str(data['hostB']['IP']),
                             'IFNAMEHOSTA': str(data['hostA']['interfaceName']),
                             'IFNAMEHOSTB': str(data['hostB']['interfaceName']),
@@ -83,8 +81,7 @@ try:
                             'IPSWITCHB': str(data['switchDataB']['target']),
                             'DASHTITLE':str(data['dashTitle']) + timeTxt}
         elif data['switchNum'] == 3:
-            replacements = {'GRAFANA': str(data['grafanaHostIP']),
-                            'IPHOSTA': str(data['hostA']['IP']), 
+            replacements = {'IPHOSTA': str(data['hostA']['IP']), 
                             'IPHOSTB': str(data['hostB']['IP']),
                             'IFNAMEHOSTA': str(data['hostA']['interfaceName']),
                             'IFNAMEHOSTB': str(data['hostB']['interfaceName']),
@@ -109,8 +106,7 @@ try:
                             'PUSHGATEWAYNAME': "pushgateway",
                             'DASHTITLE':str(data['dashTitle']) + timeTxt}
         else:
-            replacements = {'GRAFANA': str(data['grafanaHostIP']),
-                            'IPHOSTA': str(data['hostA']['IP']), 
+            replacements = {'IPHOSTA': str(data['hostA']['IP']), 
                             'IPHOSTB': str(data['hostB']['IP']),
                             'IFNAMEHOSTA': str(data['hostA']['interfaceName']),
                             'IFNAMEHOSTB': str(data['hostB']['interfaceName']),
