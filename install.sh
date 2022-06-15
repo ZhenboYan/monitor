@@ -7,6 +7,7 @@ MYIP=$(hostname -I | head -n1 | awk '{print $1;}')
 echo "||    Inserting your IP address ${MYIP} to prometheus.yml file"
 echo "||    If the IP address is incorrect please update manually"
 sed -i -e 's@your_ip:9091 @${MYIP}:9091 @' PrometheusGrafana/prometheus.yml
+exit 1
 
 ## Read inputs
 while getopts l: flag; do
