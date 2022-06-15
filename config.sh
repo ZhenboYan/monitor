@@ -18,3 +18,4 @@ echo "!!    configuration templates are provided PrometheusGrafana/*_template.ym
 echo "!!    Visit Google Doc for Grafana API Key instruction: https://docs.google.com/document/d/e/2PACX-1vRAwtpqlMKbii-hiqMoFD_N5PghMSw2eTMts9VhBww3AoSnXnQkjEcra4ReyLLsXrAuE_VEwLHRg33c/pub"
 
 echo "!!    After Configuration: run ./start.sh to start Grafana-Prometheus-Pushgateway"
+echo " "
