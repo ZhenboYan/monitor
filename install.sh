@@ -3,11 +3,6 @@
 echo "|| Grafana-Prometheus-Pushgateway Installer ||"
 echo "||                                          ||"
 
-MYIP=$(hostname -I | head -n1 | awk '{print $1;}')
-echo "||    Inserting your IP address ${MYIP} to prometheus.yml file"
-echo "||    If the IP address is incorrect please update manually"
-sed -i -e "s@your_ip:9091 @${MYIP}:9091 @" PrometheusGrafana/prometheus.yml
-
 ## Read inputs
 while getopts l: flag; do
     case "${flag}" in
@@ -31,6 +26,10 @@ sudo yum  -y install grafana
 sudo systemctl enable --now grafana-server
 sudo firewall-cmd --add-port=3000/tcp --permanent
 sudo firewall-cmd --reload
+sudo yum install pip
+pip install pyymal
+pip install requests
+# sudo systemctl stop grafana-server
 
 # >Certificates
 
@@ -56,3 +55,6 @@ if [ "$sslmode" == "1" ]; then # Let's Encrypt
         echo "              Please run the following script after installation: sudo /certify.sh $domain" 
     fi
 fi
+
+# Configuration starts
+/bin/bash ./config.sh

@@ -1,0 +1,33 @@
+# Number of switches
+switchNum: 1
+# Grafana Dashboard Title   
+dashTitle: "AWS pushgateway"
+# Prometheus Port
+prometheusPort: 9090
+# Pushgateway Port
+pushgatewayPort: 9091
+# The IP of the host which is running the Grafana container
+grafanaHostIP: localhost
+# The port which the Grafana container is listening on
+grafanaPort: 3000
+# Grafana API Token
+grafanaAPIToken: "Bearer eyJrIjoiSURWRGtqNEdPcUhKVlppVEF2VWRpV2ZVclJETTVaVTciLCJuIjoiYXdzdm0iLCJpZCI6MX0="
+# Host 1 Specifics 
+hostA:
+  IP: 198.32.43.16
+  interfaceName: 'ens2f0.43'
+  interfaceIP: '10.10.100.1'
+  # nodeName: 'sdn-dtn-2-10.ultralight.org'
+  switchPort: 
+    ifName: 'TenGigabitEthernet 0/46'
+    ifIndex: 1054468
+# Prometheus source specifics
+switchData:
+  job_name: 'snmp1'
+  # The IP of the host which is running the SNMP Exporter container
+  SNMPHostIP: 198.32.43.16
+  scrapeInterval: 15s
+  scrapeDuration: 5h
+  target: 172.16.1.14
+  #if-mib and F10-IF-EXTENSION-MIB
+  params: ['if_mib']
