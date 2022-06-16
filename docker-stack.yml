@@ -2,7 +2,6 @@ version: '3.8'
 
 volumes:
     prometheus_data: {}
-    pushgateway_data: {}
 
 networks:
   monitor-net:
@@ -15,8 +14,8 @@ services:
     volumes:
       - ./PrometheusGrafana/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
-    expose:
-      - 9090
+    # expose:
+    #   - 9090
     ports:
       - "9090:9090"
     networks:
@@ -31,8 +30,8 @@ services:
   pushgateway:
     image: prom/pushgateway
     container_name: pushgateway
-    expose:
-      - 9091
+    # expose:
+    #   - 9091
     ports:
       - "9091:9091"
     deploy:
