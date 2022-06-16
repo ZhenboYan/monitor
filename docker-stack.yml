@@ -49,8 +49,8 @@ services:
     volumes:
       - /:/host:ro,rslave
     command: 
-      - '--net=host' 
-      - '--pid=host'
+      - --net="host" 
+      - --pid="host"
       - '--path.rootfs=/host'
     expose:
       - 9100
