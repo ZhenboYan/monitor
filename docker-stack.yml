@@ -50,11 +50,7 @@ services:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /:/rootfs:ro
-      - /:/host:ro,rslave
-    command:
-      - '--net=host' 
-      - '--pid="host'
-      - '--path.rootfs=/host'
+    command: 
       - '--path.procfs=/host/proc' 
       - '--path.sysfs=/host/sys'
       - --collector.filesystem.ignored-mount-points
