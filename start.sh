@@ -21,7 +21,7 @@ if [ -f "PrometheusGrafana/$config_file" ]; then
     sudo systemctl start grafana-server
     echo "!!    Previous stack revmoed"
     HOSTNAME=$(hostname) docker stack deploy -c docker-stack.yml cloud
-    # cd PrometheusGrafana
+    cd PrometheusGrafana
     # sudo docker run -d --name startprom -p 9090:9090     -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml     prom/prometheus:v2.2.1
     # sudo docker run -d --name startpush -p 9091:9091 prom/pushgateway
     python3 two_dynamic.py $config_file
