@@ -56,7 +56,7 @@ services:
     networks:
       - monitor-net
     deploy:
-      mode: global
+      # mode: global
       restart_policy:
           condition: on-failure
 #  pushgateway:
