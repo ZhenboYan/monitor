@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.2.1
+    container_name: prometheus
+    volumes:
+      - ./PrometheusGrafana/prometheus.yml:/etc/prometheus/prometheus.yml
+    expose:
+      - 9090
+
+  pushgateway:
+    image: prom/pushgateway
+    container_name: pushgateway
+    expose:
+      - 9091
+    ports:
+      - "9091:9091"
