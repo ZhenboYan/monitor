@@ -50,7 +50,11 @@ services:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /:/rootfs:ro
-    command: 
+      - /:/host:ro,rslave
+    command:
+      - '--net=host' 
+      - '--pid="host'
+      - '--path.rootfs=/host'
       - '--path.procfs=/host/proc' 
       - '--path.sysfs=/host/sys'
       - --collector.filesystem.ignored-mount-points
@@ -63,13 +67,3 @@ services:
       mode: global
       restart_policy:
           condition: on-failure
-#  pushgateway:
-#    image: prom/pushgateway
-#    deploy:
-#      mode: global
-#      restart_policy:
-#        condition: on-failure
-#    ports:
-#      - 9091:9091
-#    networks:
-#      - monitor-net
