@@ -46,6 +46,7 @@ services:
 
   node-exporter:
     image: quay.io/prometheus/node-exporter:lates
+    container_name: node-exporter
     volumes:
       - /:/host:ro,rslave
     command: 
