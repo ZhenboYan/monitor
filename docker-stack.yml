@@ -52,7 +52,8 @@ services:
       - '--net=host' 
       - '--pid=host'
       - '--path.rootfs=/host'
-      - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
+    expose:
+      - 9100
     ports:
       - 9100:9100
     networks:
