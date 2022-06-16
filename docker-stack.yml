@@ -53,10 +53,6 @@ services:
       - --net="host" 
       - --pid="host"
       - '--path.rootfs=/host'
-    expose:
-      - 9100
-    ports:
-      - 9100:9100
     networks:
       - monitor-net
     deploy:
