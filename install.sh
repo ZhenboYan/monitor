@@ -10,6 +10,18 @@ while getopts l: flag; do
     esac
 done
 
+if [ -x "$(command -v docker)" ]; then
+    echo "||        Found docker..."
+    echo "||        Running docker login..."
+    docker login
+    echo "||        Checking docker swarm..."
+    docker swarm init &>/dev/null
+else
+    echo "!!    Docker command not found."
+    echo "!!        Please visit https://docs.docker.com/install/ for installation instructions."
+    exit 1
+fi
+
 # install grafana
 sudo tee  /etc/yum.repos.d/grafana.repo<<EOF
 [grafana]
@@ -30,7 +42,11 @@ sudo yum –y install python3
 sudo yum –y install python3-pip
 pip3 install pyymal
 pip3 install requests
-# sudo systemctl stop grafana-server
+echo "!!    Grafana is running on http://localhost:3000"
+sudo systemctl start grafana-server
+
+# Configuration starts
+/bin/bash ./config.sh
 
 # >Certificates
 
@@ -56,6 +72,3 @@ if [ "$sslmode" == "1" ]; then # Let's Encrypt
         echo "              Please run the following script after installation: sudo /certify.sh $domain" 
     fi
 fi
-
-# Configuration starts
-/bin/bash ./config.sh
