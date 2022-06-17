@@ -22,12 +22,16 @@ else
     exit 1
 fi
 
+sleep 0.5
+
 if [ -d "$(/script_exporter)"]; then 
     echo "!!    script exporter already exists"
 else
     echo "!!    downloading script exporter"
     git clone https://github.com/ricoberger/script_exporter.git
 fi
+
+sleep 0.5
 
 # install grafana
 sudo tee  /etc/yum.repos.d/grafana.repo<<EOF
@@ -41,21 +45,27 @@ gpgkey=https://packages.grafana.com/gpg.key
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 EOF
-sudo yum  -y install grafana
+sudo yum -y install grafana
+sudo yum install firewalld
 sudo systemctl enable --now grafana-server
 sudo firewall-cmd --add-port=3000/tcp --permanent
 sudo firewall-cmd --reload
 sudo yum –y install python3
 sudo yum –y install python3-pip
-pip3 install pyymal
-pip3 install requests
-echo "!!    Grafana is running on http://localhost:3000"
+sudo pip3 install pyyaml
+sudo pip3 install requests
 sudo systemctl start grafana-server
+echo "!!    Grafana is running on http://localhost:3000"
+echo "!!    Start Configuration Script"
+
+sleep 0.5
 
 # Configuration starts
 /bin/bash ./config.sh
 
 # >Certificates
+echo "!!    Start Encryption Script"
+sleep 0.5
 
 if [ -z "$input_lets" ]; then
     echo "Let's Encrypt Certificate Setup for Grafana to enable https on port 3000: "
