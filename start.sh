@@ -1,6 +1,7 @@
 #! /bin/bash
 
-echo "!!    Make sure Port 3000, 9090, 9091 are not in use"
+echo "!!    Make sure Port 3000, 9090, 9091, 9469 are not in use"
+sleep 1
 echo "!!    sudo lsof -i -P -n | grep LISTEN"
 echo "!!    Check Port 3000"
 sudo lsof -i -P -n | grep 3000
@@ -21,18 +22,25 @@ read -r -p "!!    Input config file name: " config_file
 
 if [ -f "PrometheusGrafana/$config_file" ]; then
     echo "!!    Remove previous stack"
-    # docker rm -f startpush startprom
+    sleep 0.5
     docker stack rm could
-    sudo systemctl start grafana-server
+    
     echo "!!    Previous stack revmoed"
-    # HOSTNAME=$(hostname) 
+    sleep 0.5
+    
+    echo "!!    Start Grafana-server"
+    sudo systemctl start grafana-server
+    sleep 1
+    
     echo "!!    Deploy promethues and pushgateway"
     docker stack deploy -c docker-stack.yml cloud
     sleep 1
+    
     echo "!!    Deploy script exporter"
     cd script_exporter
     docker stack deploy -c docker-compose.yaml cloud
     sleep 1
+    
     cd ..
     cd PrometheusGrafana
     # sudo docker run -d --name startprom -p 9090:9090     -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml     prom/prometheus:v2.2.1
