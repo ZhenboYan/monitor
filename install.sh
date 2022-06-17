@@ -45,15 +45,25 @@ gpgkey=https://packages.grafana.com/gpg.key
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 EOF
+
+sleep 0.5
+
 sudo yum -y install grafana
 sudo yum install firewalld
-sudo systemctl enable --now grafana-server
-sudo firewall-cmd --add-port=3000/tcp --permanent
-sudo firewall-cmd --reload
 sudo yum –y install python3
 sudo yum –y install python3-pip
 sudo pip3 install pyyaml
 sudo pip3 install requests
+
+sleep 0.5
+
+echo "!!    IMPORTANT"
+echo "!!    Enable port 3000"
+sleep 0.5
+sudo systemctl enable --now grafana-server
+sudo systemctl enable firewalld
+sudo firewall-cmd --add-port=3000/tcp --permanent
+sudo firewall-cmd --reload
 sudo systemctl start grafana-server
 echo "!!    Grafana is running on http://localhost:3000"
 echo "!!    Start Configuration Script"
