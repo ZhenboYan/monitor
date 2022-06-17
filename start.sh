@@ -4,11 +4,16 @@ echo "!!    Make sure Port 3000, 9090, 9091 are not in use"
 echo "!!    sudo lsof -i -P -n | grep LISTEN"
 echo "!!    Check Port 3000"
 sudo lsof -i -P -n | grep 3000
+sleep 1
 echo "!!    Check Port 9090"
 sudo lsof -i -P -n | grep 9090
+sleep 1
 echo "!!    Check Port 9091"
 sudo lsof -i -P -n | grep 9091
-
+sleep 1
+echo "!!    Check Port 9469"
+sudo lsof -i -P -n | grep 9469
+sleep 1
 # sudo docker run -d --name startgrafana -p 3000:3000 -e "GF_INSTALL_PLUGINS=jdbranham-diagram-panel" grafana/grafana
 # sudo docker start startgrafana
 
@@ -23,9 +28,12 @@ if [ -f "PrometheusGrafana/$config_file" ]; then
     # HOSTNAME=$(hostname) 
     echo "!!    Deploy promethues and pushgateway"
     docker stack deploy -c docker-stack.yml cloud
+    sleep 1
     echo "!!    Deploy script exporter"
     cd script_exporter
     docker stack deploy -c docker-compose.yaml cloud
+    sleep 1
+    cd ..
     cd PrometheusGrafana
     # sudo docker run -d --name startprom -p 9090:9090     -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml     prom/prometheus:v2.2.1
     # sudo docker run -d --name startpush -p 9091:9091 prom/pushgateway
