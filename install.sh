@@ -22,7 +22,7 @@ else
     exit 1
 fi
 
-if [ -d "/script_exporter"]; then 
+if [ -d "./script_exporter"]; then 
     echo "!!    script exporter already exists"
 else
     echo "!!    downloading script exporter"
