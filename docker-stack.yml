@@ -45,8 +45,6 @@ services:
     image: ricoberger/script_exporter:v2.4.0
     volumes:
       - script_exporter/examples:bin/examples
-    command:
-      - -config.file=/bin/examples/config.yaml
     ports:
       - "9469:9469"
     depoly:
