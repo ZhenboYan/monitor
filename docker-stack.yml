@@ -39,7 +39,7 @@ services:
 
   script_exporter:
     build: ./script_exporter
-    # image: ricoberger/script_exporter:v2.4.0
+    image: ricoberger/script_exporter:v2.4.0
     # volumes:
     #   - ./script_exporter/examples:bin/examples
     # command:
