@@ -22,6 +22,13 @@ else
     exit 1
 fi
 
+if [ -d "/script_exporter"]; then 
+    echo "!!    script exporter already exists"
+else
+    echo "!!    downloading script exporter"
+    git clone https://github.com/ricoberger/script_exporter.git
+fi
+
 # install grafana
 sudo tee  /etc/yum.repos.d/grafana.repo<<EOF
 [grafana]

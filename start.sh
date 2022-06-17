@@ -34,6 +34,12 @@ if [ -f "PrometheusGrafana/$config_file" ]; then
     # if [ "$hostnum" == "3" ]; then
     #     python3 multi_dynamic.py $config_file
     # fi
+
+    # read -r -p "Start script exporter? [y/N]: " script
+
+    # if [ "$script" == "y" ] || [ "$script" == "Y" ]; then
+        
+    # fi
 else
     echo "!!    Config file doesn't exist"
     exit 1
