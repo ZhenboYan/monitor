@@ -37,23 +37,23 @@ services:
     networks:
       - monitor-net 
  
-  script_exporter:
-    image: 'ricoberger/script_exporter:v2.4.0'
-    volumes:
-      - './script_exporter/examples:bin/examples'
-    command:
-      - '-config.file=/bin/examples/config.yaml'
-      - '-web.listen-address=:9469'
-    ports:
-      - '9469:9469'
-    deploy:
-      placement:
-        constraints:
-          - node.role==manager
-      restart_policy:
-        condition: on-failure
-    networks:
-      - monitor-net 
+  # script_exporter:
+  #   image: 'ricoberger/script_exporter:v2.4.0'
+  #   volumes:
+  #     - './script_exporter/examples:bin/examples'
+  #   command:
+  #     - '-config.file=/bin/examples/config.yaml'
+  #     - '-web.listen-address=:9469'
+  #   ports:
+  #     - '9469:9469'
+  #   deploy:
+  #     placement:
+  #       constraints:
+  #         - node.role==manager
+  #     restart_policy:
+  #       condition: on-failure
+  #   networks:
+  #     - monitor-net 
 
 # docker run --network="host" --rm -it --name script_exporter -p 9469:9469 -v $(pwd)/examples:/examples ricoberger/script_exporter:dev -config.file /examples/config.yaml
 
