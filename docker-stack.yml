@@ -36,7 +36,9 @@ services:
         condition: on-failure
     networks:
       - monitor-net 
- 
+
+# script exporter is stand alone in script_exporter file 
+
   # script_exporter:
   #   image: 'ricoberger/script_exporter:v2.4.0'
   #   volumes:
@@ -54,7 +56,3 @@ services:
   #       condition: on-failure
   #   networks:
   #     - monitor-net 
-
-# docker run --network="host" --rm -it --name script_exporter -p 9469:9469 -v $(pwd)/examples:/examples ricoberger/script_exporter:dev -config.file /examples/config.yaml
-
-# docker build -f ./Dockerfile -t ricoberger/script_exporter:dev .

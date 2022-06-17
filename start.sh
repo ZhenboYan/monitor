@@ -21,7 +21,11 @@ if [ -f "PrometheusGrafana/$config_file" ]; then
     sudo systemctl start grafana-server
     echo "!!    Previous stack revmoed"
     # HOSTNAME=$(hostname) 
+    echo "!!    Deploy promethues and pushgateway"
     docker stack deploy -c docker-stack.yml cloud
+    echo "!!    Deploy script exporter"
+    cd script_exporter
+    docker stack deploy -c docker-compose.yaml cloud
     cd PrometheusGrafana
     # sudo docker run -d --name startprom -p 9090:9090     -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml     prom/prometheus:v2.2.1
     # sudo docker run -d --name startpush -p 9091:9091 prom/pushgateway
