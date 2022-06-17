@@ -19,3 +19,6 @@ echo "!!    Visit Google Doc for Grafana API Key instruction: https://docs.googl
 
 echo "!!    After Configuration: run ./start.sh to start Grafana-Prometheus-Pushgateway"
 echo " "
+
+read -p "!!     Press enter to continue"
+echo " "
