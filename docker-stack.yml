@@ -47,14 +47,14 @@ services:
       - /root/monitor/script_exporter/examples:bin/examples
     ports:
       - "9469:9469"
-    # depoly:
-    #   placement:
-    #     constraints:
-    #       - node.role==manager
-    #   restart_policy:
-    #     condition: on-failure
-    # networks:
-    #   - monitor-net
+    depoly:
+      placement:
+        constraints:
+          - node.role==manager
+      restart_policy:
+        condition: on-failure
+    networks:
+      - monitor-net
 
 # docker run --network="host" --rm -it --name script_exporter -p 9469:9469 -v $(pwd)/examples:/examples ricoberger/script_exporter:dev -config.file /examples/config.yaml
 
