@@ -57,13 +57,13 @@ sudo pip3 install requests
 
 sleep 0.5
 
-echo "!!    IMPORTANT"
-echo "!!    Enable port 3000"
-sleep 0.5
-sudo systemctl enable --now grafana-server
-sudo systemctl enable firewalld
-sudo firewall-cmd --add-port=3000/tcp --permanent
-sudo firewall-cmd --reload
+# echo "!!    IMPORTANT"
+# echo "!!    Enable port 3000"
+# sleep 0.5
+# sudo systemctl enable --now grafana-server
+# sudo systemctl enable firewalld
+# sudo firewall-cmd --add-port=3000/tcp --permanent
+# sudo firewall-cmd --reload
 sudo systemctl start grafana-server
 echo "!!    Grafana is running on http://localhost:3000"
 echo "!!    Start Configuration Script"

@@ -3,7 +3,7 @@ MYIP=$(hostname -I | head -n1 | awk '{print $1;}')
 
 read -r -p "Is ${MYIP} your IP address [y/N]: " correct_ip
 
-if [ "$correct_ip" == "N" ]; then
+if [ "$correct_ip" == "N" ] || [ "$correct_ip" == "n" ]; then
     read -r -p "Type in your ip address: " MYIP
 fi
 
