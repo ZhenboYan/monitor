@@ -41,6 +41,9 @@ services:
     image: ricoberger/script_exporter:v2.4.0
     volumes:
       - ./script_exporter/examples:bin/examples
+    command:
+      - '-config.file=/bin/examples/config.yaml'
+      - '-web.listen-address=:9469'
     ports:
       - "9469:9469"
     deploy:
