@@ -40,7 +40,7 @@ services:
   script_exporter:
     image: ricoberger/script_exporter:v2.4.0
     volumes:
-      - /root/monitor/script_exporter/examples:bin/examples
+      - ./script_exporter/examples:bin/examples
     ports:
       - "9469:9469"
     deploy:
