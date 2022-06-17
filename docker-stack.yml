@@ -43,10 +43,10 @@ services:
 
   script_exporter:
     image: ricoberger/script_exporter:v2.4.0
-    # volumes:
-    #   - script_exporter/examples:bin/examples
-    # ports:
-    #   - "9469:9469"
+    volumes:
+      - script_exporter/examples:bin/examples
+    ports:
+      - "9469:9469"
     # depoly:
     #   placement:
     #     constraints:
