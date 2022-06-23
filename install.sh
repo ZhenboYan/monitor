@@ -15,7 +15,7 @@ if [ -x "$(command -v docker)" ]; then
     echo "||        Running docker login..."
     docker login
     echo "||        Checking docker swarm..."
-    docker swarm init &>/dev/null
+    docker swarm init # &>/dev/null
 else
     echo "!!    Docker command not found."
     echo "!!        Please visit https://docs.docker.com/install/ for installation instructions."
